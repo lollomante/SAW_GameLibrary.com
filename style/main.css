@@ -1,0 +1,16 @@
+.main{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20;
+    color: white;
+}
+.error{
+    color: red;
+}
+.link{
+    color: rgb(217, 239, 17); 
+}
+.success{
+    color: #04AA6D;
+}
+
+/*made on earth by humens */
