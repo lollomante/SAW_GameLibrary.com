@@ -1,11 +1,4 @@
 <?php 
-    //variable that keeps track if the file has already been included
-    $mysql_connect = true;  
-
-    //if (!isset($config)){
-    //    include 'config.php';
-    //}
-    
     //TODO: turn this into function
 
         if (!isset ($link)){

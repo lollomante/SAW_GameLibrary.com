@@ -1,7 +1,4 @@
 <?php
-    //variable that keeps track if the file has already been included
-	$access_control = true;
-
     //check if user is not banned and create session, return fase if user is banned, create session and return true otherwise
     function create_session($key, $email, $firstname, $lastname, $id){
         include 'mysqli_connect.php';

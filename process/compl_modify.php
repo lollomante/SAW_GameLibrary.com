@@ -1,11 +1,7 @@
 <?php
 session_start();
-if (!isset($config)){
-    include 'config.php';
-}
-if (!isset($access_control)){
-    include 'access_control.php';
-}
+require_once 'config.php';
+require_once 'access_control.php';
 if (!session_control()){
     header('Location: ../index.php');
     exit();

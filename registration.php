@@ -6,7 +6,7 @@ require_once 'process/utility_function.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //ceck that all field are valid
-    if(!Validate_Input($_POST['firstname']) || !Validate_Input($_POST['lastname']) || !Validate_Input($_POST['email']) || !Validate_Input($_POST['pass']) || !Validate_Input($_POST['confirm'])){
+    if(!Validate_Input($_POST['firstname']) || !Validate_Input($_POST['lastname']) || !Validate_Input($_POST['email']) || !Validate_Password($_POST['pass']) || !Validate_Password($_POST['confirm'])){
         header('Location: registration.php? success=fail');
         exit();
     }
@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label class = "input_label" for="email">Email:</label>
                     <input class= "input" type="email" placeholder="Enter Email" id="email" name="email" required><br><br>
 
-                    <label class = "input_label" for="pass">Password:</label>
+                    <label class = "input_label" for="pass">Password: (min. 8 char)</label>
                     <input class= "input" type="password" placeholder="Enter Password" id="pass" name="pass" required><br><br>
 
                     <label class = "input_label" for="confirm">Confirm Password:</label>

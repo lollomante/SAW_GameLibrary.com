@@ -1,7 +1,4 @@
 <?php 
-//variable that keeps track if the file has already been included
-    $config = true;    
-
 //connection to database
     define('server', 'localhost');
     define('DB_username', 'root');
@@ -11,6 +8,10 @@
 //login
     define('RememberMeDuration', 1296000); // 15 giorni
 
+
+/* made on earth by humans*/
+
+/*
 //superuser email
     define('SuperUserEmail', 'root@root.it');
 
@@ -24,4 +25,5 @@
 //mysqli errors
     define('DuplicateEntryError', 1062);
    // $ConnectionError = 
+*/
 ?>

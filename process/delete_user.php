@@ -1,69 +1,56 @@
 <?php
-    session_start();
-    if (!isset($access_control)){
-        include 'access_control.php';
-    }
-    if(!isset($config)){
-    	include 'config.php';
-    }
+session_start();
+require_once 'access_control.php';
+require_once 'config.php';
+if (!admin_control()){
+    header('Location: ../login.php? success=fail');
+    exit();
+}
 
-    if (!admin_control()){
-        header('Location: ../login.php? success='.GenericFail);
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    include 'mysqli_connect.php';
+
+    $stmt=$link->prepare("SELECT email FROM user WHERE user_id=?");
+    if($stmt == false){
+        $link->close(); 
+        header('Location: ../user_list.php? success=fail');
         exit();
     }
-?>
-
-<?php
-   if ($_SERVER["REQUEST_METHOD"] == "GET") {
-        include 'mysqli_connect.php';
-
-        $stmt=$link->prepare("SELECT email FROM user WHERE user_id=?");
-        if($stmt == false){
-            $link->close(); 
-            header('Location: ../user_list.php? success='.GenericFail);
-            exit();
-        }
-        $stmt->bind_param('s', $_GET["user_id"]);
-        if($stmt == false){
-            $link->close(); 
-            header('Location: ../user_list.php? success='.GenericFail);
-            exit();
-        }
-        $stmt->execute();
-        if($stmt==false){
-            $link->close(); 
-            header('Location: ../user_list.php? success='.GenericFail);
-            exit();
-        }
-        $res = $stmt->get_result();{
-        $row = $res->fetch_assoc();
-        if($row['email'] == SuperUserEmail){
-            $link->close(); 
-            header('Location: ../user_list.php? success='.GenericFail);
-            exit();
-        }
-        $stmt=$link->prepare("DELETE FROM user WHERE user_id=?");
-        if($stmt == false){
-            $link->close();
-            header('Location: ../user_list.php? success='.GenericFail);
-            exit();
-        }
-        $stmt->bind_param('s', $_GET["user_id"]);
-        if($stmt == false){
-            $link->close(); 
-            header('Location: ../user_list.php? success='.GenericFail);
-            exit();
-        }
-        $stmt->execute();
-        echo $stmt->affected_rows;
-        if($stmt->affected_rows == 1){
-            $link->close(); 
-            header('Location: ../user_list.php? success='.DeleteSuccess);
-            exit();          
-        }
+    $stmt->bind_param('s', $_GET["user_id"]);
+    if($stmt == false){
+        $link->close(); 
+        header('Location: ../user_list.php? success=fail');
+        exit();
+    }
+    $stmt->execute();
+    if($stmt==false){
+        $link->close(); 
+        header('Location: ../user_list.php? success=fail');
+        exit();
+    }
+    $res = $stmt->get_result();{
+    $row = $res->fetch_assoc();
+    $stmt=$link->prepare("DELETE FROM user WHERE user_id=?");
+    if($stmt == false){
         $link->close();
-        header('Location: ../user_list.php? success='.GenericFail);
-        exit();     
+        header('Location: ../user_list.php? success=fail');
+        exit();
+    }
+    $stmt->bind_param('s', $_GET["user_id"]);
+    if($stmt == false){
+        $link->close(); 
+        header('Location: ../user_list.php? success=fail');
+        exit();
+    }
+    $stmt->execute();
+    if($stmt->affected_rows == 1){
+        $link->close(); 
+        header('Location: ../user_list.php? success=delete_success');
+        exit();          
+    }
+    $link->close();
+    header('Location: ../user_list.php? success=fail');
+    exit();     
     }
 }
 ?>
