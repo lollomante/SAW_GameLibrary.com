@@ -1,0 +1,36 @@
+.search_bar{
+    margin-top: 20px;
+    line-height:30px;
+    border-radius: 5px;
+}
+.bar{
+    width: 80%;
+    margin:auto;
+    font-size: 15px;
+    color: white
+}
+.input {
+    width: 84%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    box-sizing: border-box;
+    background-color: #505055;
+    /*background-color: #3d3d41;*/
+    color: white;
+    font-size: 15px;
+    border-radius: 25px;
+    border: none;
+
+}
+.button {
+    background-color: #aaa704;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 15%;
+    font-size: 15px;
+    border-radius: 25px;
+    
+}
