@@ -12,8 +12,23 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $data = explode('|', $_GET['game_id']);
         include 'mysqli_connect.php';
         $stmt=$link->prepare("SELECT main_compl, secondary_compl, objectives_compl FROM library_rel WHERE user_id=? AND game_id=?");
+        if($stmt == false){
+            $link->close();
+            header('Location: ../index.php');
+            exit();         
+        }
         $stmt->bind_param('ss', $_SESSION['user_id'], $data[0]);
+        if($stmt == false){
+            $link->close();
+            header('Location: ../index.php');
+            exit();         
+        }
         $stmt->execute();
+        if($stmt == false){
+            $link->close();
+            header('Location: ../index.php');
+            exit();         
+        }
         $res = $stmt->get_result();
         $row = $res->fetch_assoc();
         if($res->num_rows!=1){

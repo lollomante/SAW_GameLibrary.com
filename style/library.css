@@ -24,8 +24,12 @@ body {
 
 }
 .inner_container{
+    width: auto;
+    margin: auto;
+    /*
     margin-left: 40px;
     margin-right: 40px;
+    */
 }
 .poster{
     margin-top: 40px;

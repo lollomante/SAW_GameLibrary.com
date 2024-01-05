@@ -38,43 +38,39 @@
         if (isset($_SESSION["key"])){
             return true;
         }
-        
-       //"remember me" management
-       else {
-        if (isset($_COOKIE['remember_me'])){
-            include 'mysqli_connect.php'; 
-            $data = explode('/', $_COOKIE['remember_me']);
-            $stmt=$link->prepare("SELECT firstname, lastname, email, remember_user_id, remember_user_token, expire FROM user WHERE remember_user_id=?");
-            if($stmt == false){
-                $link->close();
-                return false;
-            }
-            $stmt->bind_param('s', $data[0]);
-            if($stmt == false){
-                $link->close();
-                return false;
-            }
-            $stmt->execute();
-            if($stmt == false){
-                $link->close();
-                return false;
-            }
-            $res = $stmt->get_result();
-            $rowcount = $res->num_rows;
-            if($rowcount==1){
-                $row = $res->fetch_assoc();
-                if ($row['expire']>time()){
-                    if(password_verify($data[1], $row['user_token'])){
-                        if(create_session(session_id(),$row['email'],$row['firstname'],$row['lastname'],$row['user_id'])==TRUE){
-                            return true; 
+        //"remember me" management
+        else {
+            if (isset($_COOKIE['remember_me'])){
+                include 'mysqli_connect.php'; 
+                $data = explode('/', $_COOKIE['remember_me']);
+                $stmt=$link->prepare("SELECT firstname, lastname, email, user_id, remember_user_token, remember_expire FROM user WHERE remember_user_id=?");
+                if($stmt == false){
+                    $link->close();
+                    return false;
+                }
+                $stmt->bind_param('s', $data[0]);
+                if($stmt == false){
+                    $link->close();
+                    return false;
+                }
+                $stmt->execute();
+                if($stmt == false){
+                    $link->close();
+                    return false;
+                }
+                $res = $stmt->get_result();
+                if($res->num_rows==1){
+                    $row = $res->fetch_assoc();
+                    if ($row['remember_expire']>time()){
+                        if(password_verify($data[1], $row['remember_user_token'])){
+                            if(create_session(session_id(),$row['email'],$row['firstname'],$row['lastname'],$row['user_id'])==TRUE){
+                                return true; 
+                            }
                         }
-                        echo "<p>account suspended</p>";
-                    }
-                }   
+                    }   
+                }
             }
         }
-    }
-        
         return false;
     }
 

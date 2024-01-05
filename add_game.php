@@ -21,7 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //connection to DB and insert date
     include 'process/mysqli_connect.php';
-    //TODO: resolve developer - developer-id thing
     $stmt=$link->prepare("INSERT INTO `game`(`name`,`series`,`engine`,`genre`,`developer`,`publisher`,`publ_date`,`description`,`trailer_link`,`trailer_title`) VALUES (?,?,?,?,?,?,?,?,?,?)");
     if($stmt == false){
         $link->close(); 
@@ -51,8 +50,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //get 'game_id' from database to save images and create link to game page
     include 'process/mysqli_connect.php';
     $stmt=$link->prepare("SELECT `game_id` FROM `game` WHERE `name`=?");
+    if($stmt==false){
+        $link->close(); 
+        header('Location: add_game.php? game_id='.NULL);
+        exit();
+    }
     $stmt->bind_param('s', $_POST['game_name']);
+    if($stmt==false){
+        $link->close(); 
+        header('Location: add_game.php? game_id='.NULL);
+        exit();
+    }
     $stmt->execute();
+    if($stmt==false){
+        $link->close(); 
+        header('Location: add_game.php? game_id='.NULL);
+        exit();
+    }
     $res = $stmt->get_result();
     $row = $res->fetch_assoc();
     if($res->num_rows!=1){
@@ -76,6 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
     <title>Add game</title>
+    <meta name="viewport" content="width=device-width"/>
     <link rel="stylesheet" type="text/css" href="style/main.css" />
     <link rel="stylesheet" type="text/css" href="style/navbar.css" />
     <link rel="stylesheet" type="text/css" href="style/footer.css" />
@@ -124,7 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input class= "input" type="text" placeholder="Enter trailer title" id="game_trailer_title" name="game_trailer_title" required><br><br>
 
                     <label class = "input_label" for="game_poster">Game poster</label>
-                    <input class= "input" lass= "input" type="file" id = "Poster" name="Poster"/><br><br>
+                    <input class= "input" type="file" id = "Poster" name="Poster"/><br><br>
 
                     <label class = "input_label" for="game_background">Game background</label>
                     <input class= "input" type="file" id = "Background" name="Background"/><br><br>

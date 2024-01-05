@@ -31,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["game_id"])) {
     if ($res->num_rows==1){
         $game_name = htmlspecialchars($row['name']);
         $game_series = htmlspecialchars($row['series']);
-        $game_type = htmlspecialchars($row['type']);
         $game_engine = htmlspecialchars($row['engine']);
         $game_genre = htmlspecialchars($row['genre']);
         $game_developer = htmlspecialchars($row['developer']);
@@ -92,6 +91,7 @@ else{
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width"/>
     <link rel="stylesheet" type="text/css" href="style/navbar.css" />
     <link rel="stylesheet" type="text/css" href="style/footer.css" />
     <link rel="stylesheet" type="text/css" href="style/main.css" />
@@ -107,93 +107,97 @@ else{
 <body>
 <?php include 'navbar.php';?>
 <div class = "main background-container">
-    <p class="title"> <?php echo $game_name;?></p>
-    <div class="row">
-        <div class="column">
-            <img class="poster"src=<?php echo $poster;?> width="600" height="900" alt=""/>
-        </div>
-        <div class="column">
-            <div class="container">
-                <div class ="inner_container">
-                    <p><span class="label">Series: </span><span class="text"><?php echo $game_series; ?></span></p>
-                    <p><span class="label">Developer: </span><span class="text"><?php echo $game_developer; ?></span></p>
-                    <p><span class="label">Publisher: </span><span class="text"><?php echo $game_publisher; ?></span></p>
-                    <p><span class="label">Engine: </span><span class="text"><?php echo $game_engine; ?></span></p>
-                    <p><span class="label">Released in: </span><span class="text"><?php echo $game_date; ?></span></p>
-                    <p><span class="label">Genre: </span><span class="text"><?php echo $game_genre; ?></span></p>
+        <p class="title"> <?php echo $game_name;?></p>
+        <div class="row">
+            <div class="column">
+                <img class="poster"src=<?php echo $poster;?> width="600" height="900" alt=""/>
+            </div>
+            <div class="column">
+                <div class="container">
+                    <div class ="inner_container">
+                        <p><span class="label">Series: </span><span class="text"><?php echo $game_series; ?></span></p>
+                        <p><span class="label">Developer: </span><span class="text"><?php echo $game_developer; ?></span></p>
+                        <p><span class="label">Publisher: </span><span class="text"><?php echo $game_publisher; ?></span></p>
+                        <p><span class="label">Engine: </span><span class="text"><?php echo $game_engine; ?></span></p>
+                        <p><span class="label">Released in: </span><span class="text"><?php echo $game_date; ?></span></p>
+                        <p><span class="label">Genre: </span><span class="text"><?php echo $game_genre; ?></span></p>
+                    </div>
+                </div>
+                <br/><br/>
+                <div class="container">
+                    <div class ="inner_container">
+                        <?php
+                        if($game_owned){
+                            echo '<p><span class="label">In Library: </span><span class="text">'.'Coming Soon!'.'</span></p>';
+                            echo '<p><span class="label">Bought in: </span><span class="text">'.'Coming Soon!'.'</span></p>';
+                            echo '<p><span class="label">Bought on: </span><span class="text">'.'Coming Soon!'.'</span></p>';
+                            echo '<p><span class="label">Price: </span><span class="text">'.'Coming Soon!'.'</span></p>';
+                        }
+                        else{
+                            echo $altermative_text;
+                        }
+                        ?>    
+                    </div>                    
+                </div>
+                <br/><br/>
+                <div class="container">
+                    <div class="inner_container">
+                        <?php
+                        if($game_owned){
+                            echo '<table style="width:100%">';
+                            echo'<tr>';
+                            echo'<th class="label">Main:</th>';
+                            echo'<th class="label">Secondary:</th>';
+                            echo'<th class="label">Objectives:</th>';
+                            echo '</tr>';
+                            echo'<tr>';
+                            if($row2['main_compl']==1){
+                                echo'<th class="button button_completed"><a class="button_text"href="process/compl_modify.php?game_id='.$game_id.'%7Cmain"> Completed</a></th>';
+                            }
+                            if($row2['main_compl']==0){
+                                echo'<th class="button button_not_completed"><a class="button_text" href="process/compl_modify.php?game_id='.$game_id.'%7Cmain"> Not completed</a></th>';
+                            }
+                            if($row2['secondary_compl']==1){
+                                echo'<th class="button button_completed"><a class="button_text" href="process/compl_modify.php?game_id='.$game_id.'%7Csec"> Completed</a></th>';
+                            }
+                            if($row2['secondary_compl']==0){
+                                echo'<th class="button button_not_completed"><a class="button_text" href="process/compl_modify.php?game_id='.$game_id.'%7Csec"> Not completed</a></th>';
+                            }
+                            if($row2['objectives_compl']==1){
+                                echo'<th class="button button_completed"><a class="button_text" href="process/compl_modify.php?game_id='.$game_id.'%7Cobj"> Completed</a></th>';
+                            }
+                            if($row2['objectives_compl']==0){
+                                echo'<th class="button button_not_completed"><a class="button_text" href="process/compl_modify.php?game_id='.$game_id.'%7Cobj"> Not completed</a></th>';
+                            }
+                            echo '</tr>';
+                            echo '</table>';                       
+                        }
+                        else{
+                            echo $altermative_text;
+                        }
+                        ?>
+                    </div>
                 </div>
             </div>
-            <br/><br/>
-            <div class="container">
-                <div class ="inner_container">
-                    <?php
-                    if($game_owned){
-                        echo '<p><span class="label">In Library: </span><span class="text">'.'Coming Soon!'.'</span></p>';
-                        echo '<p><span class="label">Bought in: </span><span class="text">'.'Coming Soon!'.'</span></p>';
-                        echo '<p><span class="label">Bought on: </span><span class="text">'.'Coming Soon!'.'</span></p>';
-                        echo '<p><span class="label">Price: </span><span class="text">'.'Coming Soon!'.'</span></p>';
-                    }
-                    else{
-                        echo $altermative_text;
-                    }
-                    ?>    
-                </div>                    
-            </div>
-            <br/><br/>
-            <div class="container">
-                <div class="inner_container">
-                    <?php
-                    if($game_owned){
-                        echo '<table style="width:100%">';
-                        echo'<tr>';
-                        echo'<th class="label">Main:</th>';
-                        echo'<th class="label">Secondary:</th>';
-                        echo'<th class="label">Objectives:</th>';
-                        echo '</tr>';
-                        echo'<tr>';
-                        if($row2['main_compl']==1){
-                            echo'<th class="button button_completed"><a class="button_text"href="process/compl_modify.php?game_id='.$game_id.'%7Cmain"> Completed</a></th>';
-                        }
-                        if($row2['main_compl']==0){
-                            echo'<th class="button button_not_completed"><a class="button_text" href="process/compl_modify.php?game_id='.$game_id.'%7Cmain"> Not completed</a></th>';
-                        }
-                        if($row2['secondary_compl']==1){
-                            echo'<th class="button button_completed"><a class="button_text" href="process/compl_modify.php?game_id='.$game_id.'%7Csec"> Completed</a></th>';
-                        }
-                        if($row2['secondary_compl']==0){
-                            echo'<th class="button button_not_completed"><a class="button_text" href="process/compl_modify.php?game_id='.$game_id.'%7Csec"> Not completed</a></th>';
-                        }
-                        if($row2['objectives_compl']==1){
-                            echo'<th class="button button_completed"><a class="button_text" href="process/compl_modify.php?game_id='.$game_id.'%7Cobj"> Completed</a></th>';
-                        }
-                        if($row2['objectives_compl']==0){
-                            echo'<th class="button button_not_completed"><a class="button_text" href="process/compl_modify.php?game_id='.$game_id.'%7Cobj"> Not completed</a></th>';
-                        }
-                        echo '</tr>';
-                        echo '</table>';                       
-                    }
-                    else{
-                        echo $altermative_text;
-                    }
-                    ?>
-                </div>
+        </div>
+        <br/><br/>
+        <div class="container">
+            <div class="inner_container">
+                <p class="label" style="text-align:center"> DLC: </p>
+                    <p class="text">Coming Soon!</p>
             </div>
         </div>
-    </div>
-    <br/><br/>
-    <div class="container">
+        <br/><br/>
+        <div class="container">
+            <div class="text inner_container">
+                <?php echo $game_description; ?>
+            </div>
+        </div>
         <div class="inner_container">
-            <p class="label" style="text-align:center"> DLC: </p>
-                <p class="text">Coming Soon!</p>
+            <iframe width="1250" height="703" src= <?php echo $trailer_link;?> title=<?php echo $trailer_title;?> frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <br><br><br><br><br>
         </div>
-    </div>
-    <br/><br/>
-    <div class="container">
-        <div class="text inner_container">
-            <?php echo $game_description; ?>
-        </div>
-    </div>
-    
-    <iframe width="1250" height="703" src= <?php echo $trailer_link;?> title=<?php echo $trailer_title;?> frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <?php include 'footer.php';?>
+</div>
 </body>
 </html>

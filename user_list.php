@@ -29,6 +29,7 @@ if (isset($_GET["success"])) {
 <html lang="en">
   <head>
     <title>List of users</title>
+    <meta name="viewport" content="width=device-width"/>
     <meta charset="utf-8">  
     <link rel="stylesheet" type="text/css" href="style/main.css" />
     <link rel="stylesheet" type="text/css" href="style/navbar.css" />

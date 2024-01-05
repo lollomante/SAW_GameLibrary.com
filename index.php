@@ -7,12 +7,13 @@ require_once 'process/access_control.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>GameLibrary.com</title>
+    <meta name="viewport" content="width=device-width"/>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style/index.css" />
     <link rel="stylesheet" type="text/css" href="style/search_bar.css" />
     <link rel="stylesheet" type="text/css" href="style/navbar.css" />
     <link rel="stylesheet" type="text/css" href="style/footer.css" />
-    <title>My Game Library</title>
 </head>
 
 <body class="body">

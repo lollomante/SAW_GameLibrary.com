@@ -18,11 +18,12 @@ $rowcount=$res->num_rows;
 <html lang="en">
 
 <head>
+    <title>Your library</title>
+    <meta name="viewport" content="width=device-width"/>
     <link rel="stylesheet" type="text/css" href="style/main.css" />
     <link rel="stylesheet" type="text/css" href="style/navbar.css" />
     <link rel="stylesheet" type="text/css" href="style/footer.css" />
     <link rel="stylesheet" type="text/css" href="style/library.css" />
-    <title>Your library</title>
 </head>
 
 <body>
@@ -31,13 +32,25 @@ $rowcount=$res->num_rows;
         <p class="title">Your library</p>
         <div class="container">
             <div class="inner_container">
-                <?php 
-                    while($row=$res->fetch_array()){
+                <?php
+                    for($i=0; $i<$rowcount;){
+                        echo '<p>';
+                        for($j= 0; $j<4 && $i<$rowcount; $j++){
+                            $row=$res->fetch_assoc();
+                            echo '<span>';
+                            echo '<a class = "poster" href = "game.php?game_id='.$row['game_id'].'">
+                                    <img class="poster" src="images/game/posters/'.$row['game_id'].'.jpg" width="300" height="450" alt="'.$row['name'].'"></a>';
+                            echo'</span>';
+                            $i++;
+                        }
+                        echo '</p>';
+                    }
+                    /*while($row=$res->fetch_array()){
                         echo '<span>';
                         echo '<a class = "poster" href = "game.php?game_id='.$row['game_id'].'">
                                 <img class="poster" src="images/game/posters/'.$row['game_id'].'.jpg" width="300" height="450" alt="'.$row['name'].'"></a>';
                         echo'</span>';
-                    }
+                    }*/
                 ?>
             </div>
 

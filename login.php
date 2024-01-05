@@ -44,16 +44,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if(isset($_POST['remember'])){
                 $user_id = hash('sha256', $_POST['email']);
                 $token = hash('sha256', random_int(0, 1000000));
-                $expire_date = time() + $RememberMeDuration; 
+                $expire_date = time() + REMEMBER_ME_DURATION; 
                 $email = $_POST['email'];
                 $BDtoken = password_hash($token, PASSWORD_DEFAULT);
                 $stmt=$link->prepare("UPDATE user SET `remember_user_id`=?, `remember_user_token`=?, `remember_expire`=? WHERE email=?");
-                $stmt->bind_param('ssss', $user_id, $BDtoken, $expire_date, $email);
-                $stmt->execute();
-                if($stmt->affected_rows == 1){
-                    $data = $user_id.'/'.$token;
-                    setcookie('remember_me', $data, RememberMeDuration);     
-                } 
+                if($stmt == false){
+                    $stmt->bind_param('ssss', $user_id, $BDtoken, $expire_date, $email);
+                    if($stmt == false){
+                        $stmt->execute();
+                        if($stmt->affected_rows == 1){
+                            $data = $user_id.'/'.$token;
+                            setcookie('remember_me', $data, $expire_date);     
+                        }
+                    }         
+                }
             }
         $link->close(); 
         header('Location: index.php');
@@ -73,6 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <title>Login</title>
+    <meta name="viewport" content="width=device-width"/>
     <link rel="stylesheet" type="text/css" href="style/main.css" />
     <link rel="stylesheet" type="text/css" href="style/form.css" />
     <link rel="stylesheet" type="text/css" href="style/navbar.css" />
