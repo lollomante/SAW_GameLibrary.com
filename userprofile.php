@@ -33,21 +33,28 @@ if($res->num_rows!=1){
     $link->close(); 
     header('Location: index.php');
 }
-if ($row['profilePic']!=null){
-    $profilepic = '"data:image/jpeg;base64,'.base64_encode($row['profilePic']).'"';
-} 
-else{
-    $profilepic = '"https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"';
-}
 $firstname = $row['firstname'];
 $lastname = $row['lastname'];
 $email = $row['email'];
 $user_id = $row['user_id'];
+if (file_exists('images/profile/'.$user_id.'.jpg')){
+    $profilepic = '"images/profile/'.$user_id.'.jpg"';
+}else{
+    $profilepic = '"images/profile/default.jpg"';
+}
 
 //update profile info
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_FILES['ProfilePic'])&& $_FILES['ProfilePic']['error'] === UPLOAD_ERR_OK){
-            $image = file_get_contents($_FILES["ProfilePic"]["tmp_name"]);
+    if (isset($_FILES['ProfilePic'])){
+        //cecek if a profile picture already exists
+        if (file_exists('images/profile/'.$user_id.'.jpg')){
+            if(unlink('images/profile/'.$user_id.'.jpg')){
+                move_uploaded_file($_FILES["ProfilePic"]["tmp_name"], 'images/profile/'.$user_id.'.jpg');
+            }
+        }
+        else{
+            move_uploaded_file($_FILES["ProfilePic"]["tmp_name"], 'images/profile/'.$user_id.'.jpg');
+        }
     }
     if (isset($_POST['firstname'])){
         if(Validate_Input($_POST['firstname'])){

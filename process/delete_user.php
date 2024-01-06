@@ -9,27 +9,10 @@ if (!admin_control()){
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     include 'mysqli_connect.php';
-
-    $stmt=$link->prepare("SELECT email FROM user WHERE user_id=?");
-    if($stmt == false){
-        $link->close(); 
-        header('Location: ../user_list.php? success=fail');
-        exit();
+    //ceck if a profile picture exists 
+    if (file_exists('../images/profile/'.$_GET["user_id"].'.jpg')){
+        unlink('../images/profile/'.$_GET["user_id"].'.jpg');
     }
-    $stmt->bind_param('s', $_GET["user_id"]);
-    if($stmt == false){
-        $link->close(); 
-        header('Location: ../user_list.php? success=fail');
-        exit();
-    }
-    $stmt->execute();
-    if($stmt==false){
-        $link->close(); 
-        header('Location: ../user_list.php? success=fail');
-        exit();
-    }
-    $res = $stmt->get_result();{
-    $row = $res->fetch_assoc();
     $stmt=$link->prepare("DELETE FROM user WHERE user_id=?");
     if($stmt == false){
         $link->close();
@@ -51,6 +34,5 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $link->close();
     header('Location: ../user_list.php? success=fail');
     exit();     
-    }
 }
 ?>
