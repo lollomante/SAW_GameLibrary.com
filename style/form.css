@@ -50,18 +50,15 @@ body{
     cursor: pointer;
     width: 100%;
 }
-
-/*made on earth by humans*/
-
 .profile_pic{
     border-radius: 50%;
     display: block;
     margin-right: auto;
     margin-left: auto;
 }
-
 .pic_container{
     margin-bottom: 20px;
     margin-top: 20px;
-
 }
+
+/*made on earth by humans*/

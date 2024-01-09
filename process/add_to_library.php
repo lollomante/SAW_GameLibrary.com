@@ -32,5 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 }
 $link->close(); 
 header('Location: ../library.php');
- exit();
+exit();
+
+/*made on earth by humans*/
 ?>

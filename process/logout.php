@@ -17,4 +17,6 @@ if(isset($_COOKIE['remember_me'])){
 session_destroy();
 header('Location: ../index.php');
 exit;
+
+/*made on earth by humans*/
 ?>

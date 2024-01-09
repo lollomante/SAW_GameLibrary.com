@@ -10,4 +10,6 @@ if (!isset ($link)){
         exit("connection_error");
         }
     }
+
+/*made on earth by humans*/
 ?>

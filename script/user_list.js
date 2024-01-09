@@ -18,3 +18,5 @@ $(document).ready(function () {
       ],
     });
   });
+
+/*made on earth by humans*/

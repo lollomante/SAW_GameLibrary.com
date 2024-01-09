@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="main">
         <div class="container">
             <div class="inner_container">
-                <form action="add_game.php" method="post" enctype="multipart/form-data">
+                <form action="add_game.php" method="post" enctype="multipart/form-data" >
 
                     <P class="formtitle">Add new game</P>
 
@@ -159,6 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
     </div>
+    <!--made on earth by humans-->
 </body>
 </html>
 

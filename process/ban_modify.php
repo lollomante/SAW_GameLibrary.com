@@ -57,4 +57,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 $link->close();
 header('Location: ../user_list.php? success=fail');
 exit();     
+
+/*made on earth by humans*/
 ?>

@@ -8,8 +8,23 @@ if (!session_control()){
 
 include 'process/mysqli_connect.php';
 $stmt=$link->prepare("SELECT game.name, game.game_id FROM game INNER JOIN library_rel ON game.game_id = library_rel.game_id WHERE library_rel.user_id = ? ORDER BY game.name");
+if($stmt == false){
+    $link->close(); 
+    header('Location: index.php');
+    exit();
+}
 $stmt->bind_param('s', $_SESSION['user_id']);
+if($stmt == false){
+    $link->close(); 
+    header('Location: index.php');
+    exit();
+}
 $stmt->execute();
+if($stmt == false){
+    $link->close(); 
+    header('Location: index.php');
+    exit();
+}
 $res = $stmt->get_result();
 $rowcount=$res->num_rows;
 
@@ -26,7 +41,7 @@ $rowcount=$res->num_rows;
     <link rel="stylesheet" type="text/css" href="style/library.css" />
 </head>
 
-<body>
+<body class="body">
     <?php include 'navbar.php'; ?>
     <div class ="main">
         <p class="title">Your library</p>
@@ -58,6 +73,7 @@ $rowcount=$res->num_rows;
     </div>
 
     <?php include 'footer.php'; ?>
+    <!--made on earth by humans-->
 
 </body>
 

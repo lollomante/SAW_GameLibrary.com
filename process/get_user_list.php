@@ -47,5 +47,7 @@ if($rowcount>0){
     }
     echo ']}';
 }
+
+/*made on earth by humans*/
 ?>
 

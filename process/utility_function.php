@@ -11,4 +11,6 @@ function Validate_Optional_input($input){
 function Validate_Password($input){
     return ((null != trim($input))&&(strlen($input) < 100)&&(strlen($input)> 7));
 }
+
+/*made on earth by humans*/
 ?>

@@ -70,6 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" type="text/css" href="style/form.css" />
     <link rel="stylesheet" type="text/css" href="style/navbar.css" />
     <link rel="stylesheet" type="text/css" href="style/footer.css" />
+    <script src="script/registration.js"></script>
 </head>
 
 <body>
@@ -79,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="main">
         <div class="container">
             <div class="inner_container">
-                <form action="registration.php" method="post">
+                <form action="registration.php" method="post" onsubmit="return validateForm()">
 
                     <p class="formtitle"> Register, all fields are required </p>
 

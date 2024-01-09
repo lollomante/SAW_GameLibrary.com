@@ -8,4 +8,5 @@
 //login
     define('REMEMBER_ME_DURATION', 1296000); // 15 giorni
 
+/*made on earth by humans*/
 ?>

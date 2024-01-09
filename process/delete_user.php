@@ -35,4 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     header('Location: ../user_list.php? success=fail');
     exit();     
 }
+
+/*made on earth by humans*/
 ?>

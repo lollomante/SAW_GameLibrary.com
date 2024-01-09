@@ -46,7 +46,7 @@ require_once 'process/access_control.php';
                             <td>'.$row['publ_date'].'</td>
                         </tr>';
                 }  
-                echo '</table>';         
+                echo '</table><br><br><br><br><br>';         
             }
             else{
                 echo"
@@ -77,6 +77,7 @@ require_once 'process/access_control.php';
     </div>
 
     <?php include 'footer.php'; ?>
+    <!--made on earth by humans-->
 </body>
 
 </html>

@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label class = "input_label" for="pass">Password:</label>
                     <input class= "input" type="password" placeholder="Enter Password" id="pass" name="pass" required><br><br>
 
-                    <label class="smallgentext" for="RemenberMe"> Remember Me </label>
+                    <label class="smallgentext" for="Remenber"> Remember Me </label>
                     <input type="checkbox"  id="remember" name="remember"> <br><br>
                     
                     <button class= "button" type="submit" > Login </button>
