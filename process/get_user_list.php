@@ -4,6 +4,7 @@ require_once 'config.php';
 require_once 'access_control.php';
 if (!admin_control()){
     header('Location: ../login.php');
+    exit();
 }
 
 include 'mysqli_connect.php';
@@ -25,22 +26,22 @@ if ($stmt != false){
                     echo '"lastname":"'.$row['lastname'].'",';
                     echo '"email":"'.$row['email'].'",';
                     if($row['admin']==1){
-                        $temp = "<a class = 'linktext' href = 'process /admin_modify.php? user_id=".$row['user_id']."'>";
+                        $temp = "<a class = 'linktext' href = 'process/admin_modify.php? user_id=".$row['user_id']."'>";
                         echo '"admin":"'.$temp.'Remove from admin</a>'.'",';
                     }
                     else{
-                        $temp = "<a class = 'linktext' href = 'process /admin_modify.php? user_id=".$row['user_id']."'>";
+                        $temp = "<a class = 'linktext' href = 'process/admin_modify.php? user_id=".$row['user_id']."'>";
                         echo '"admin":"'.$temp.'Add to admin</a>'.'",';
                     }
                     if($row['banned']==1){
-                        $temp = "<a class = 'linktext' href = 'process /ban_modify.php? user_id=".$row['user_id']."'>";
+                        $temp = "<a class = 'linktext' href = 'process/ban_modify.php? user_id=".$row['user_id']."'>";
                         echo '"banned":"'.$temp.'Unban</a>'.'",';
                     }
                     else{
-                        $temp = "<a class = 'linktext' href = 'process /ban_modify.php? user_id=".$row['user_id']."'>";
+                        $temp = "<a class = 'linktext' href = 'process/ban_modify.php? user_id=".$row['user_id']."'>";
                         echo '"banned":"'.$temp.'Ban</a>'.'",';
                     }
-                    $temp = "<a class = 'linktext' href = 'process /delete_user.php? user_id=".$row['user_id']."'>";
+                    $temp = "<a class = 'linktext' href = 'process/delete_user.php? user_id=".$row['user_id']."'>";
                     echo '"delete":"'.$temp.'Delete user</a>'.'"';
                     echo '}';
                     if($i!=$rowcount-1){

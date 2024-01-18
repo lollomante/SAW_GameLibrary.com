@@ -5,6 +5,7 @@ require_once 'process/access_control.php';
 require_once 'process/utility_function.php';
 if (!session_control()){
     header('Location: login_page.php');
+    exit();
 }
 
 //display profile info
@@ -45,16 +46,9 @@ if (file_exists('images/profile/'.$user_id.'.jpg')){
 
 //update profile info
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $success=false;
     if (isset($_FILES['ProfilePic'])){
-        //cecek if a profile picture already exists
-        if (file_exists('images/profile/'.$user_id.'.jpg')){
-            if(unlink('images/profile/'.$user_id.'.jpg')){
-                move_uploaded_file($_FILES["ProfilePic"]["tmp_name"], 'images/profile/'.$user_id.'.jpg');
-            }
-        }
-        else{
-            move_uploaded_file($_FILES["ProfilePic"]["tmp_name"], 'images/profile/'.$user_id.'.jpg');
-        }
+        $success = move_uploaded_file($_FILES["ProfilePic"]["tmp_name"], 'images/profile/'.$user_id.'.jpg');
     }
     if (isset($_POST['firstname'])){
         if(Validate_Input($_POST['firstname'])){
@@ -75,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $link->close();
         header('Location: userprofile.php?success=false');
     }    
-    if($stmt->affected_rows==1){
+    if(($stmt->affected_rows==1)||($success=true)){
         $link->close();
         header('Location: userprofile.php?success=true');
     }
@@ -93,6 +87,7 @@ $link->close();
     <link rel="stylesheet" type="text/css" href="style/navbar.css" />
     <link rel="stylesheet" type="text/css" href="style/footer.css" />
     <link rel="stylesheet" type="text/css" href="style/form.css" />
+    <link rel="icon" type="image/x-icon" href="images/Logo.ico">
 </head>
 <body>
     <?php
@@ -117,7 +112,7 @@ $link->close();
                     <p class="formtitle">User Profile</p>
                     <div class="pic_container">    
                         <img class="profile_pic" width="150" src=<?php echo $profilepic;?> alt="your profile picture">
-                        <p><label class = "input_label">Change pic (MAX 1Mb)</label></p>
+                        <p><label class = "input_label">Change pic (MAX 2Mb)</label></p>
                         <input type="file" id = "ProfilePic" name="ProfilePic"/>
                     </div>
                     <div>

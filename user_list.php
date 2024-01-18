@@ -4,6 +4,7 @@ require_once 'process/access_control.php';
 require_once 'process/config.php';
 if (!admin_control()){
   header('Location: login.php');
+  exit();
 }
 
 if (isset($_GET["success"])) {
@@ -29,6 +30,7 @@ if (isset($_GET["success"])) {
 <html lang="en">
   <head>
     <title>List of users</title>
+    <link rel="icon" type="image/x-icon" href="images/Logo.ico">
     <meta name="viewport" content="width=device-width"/>
     <meta charset="utf-8">  
     <link rel="stylesheet" type="text/css" href="style/main.css" />

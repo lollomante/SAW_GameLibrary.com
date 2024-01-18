@@ -5,16 +5,14 @@ require_once 'process/config.php';
 require_once 'process/utility_function.php';
 if (!admin_control()){
     header('Location: login.php');
+    exit();
 }
-
 //get data from form
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //ceck that all field are valid
-    //TODO: validate date
-    //TODO: validate pictures
     if(!Validate_Input($_POST['game_name']) || !Validate_Input($_POST['game_series']) || !Validate_Optional_input($_POST['game_engine'])|| !Validate_Input($_POST['game_genre']) || !Validate_Input($_POST['game_developer']) 
         || !Validate_Input($_POST['game_publisher'])|| !Validate_Input($_POST['game_publication_date'])|| !Validate_Description($_POST['game_description'])
-        || !Validate_Input($_POST['game_trailer_link'])|| !Validate_Input($_POST['game_trailer_title'])){
+        || !Validate_Input($_POST['game_trailer_link'])|| !Validate_Input($_POST['game_trailer_title'])|| !Validate_data($_POST['game_publication_date'])){
         header('Location: add_game.php? game_id='.NULL);
         exit();
     }
@@ -78,7 +76,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //get uploaded images and save to correct folders
     move_uploaded_file($_FILES["Poster"]["tmp_name"], 'images/game/posters/'.$row['game_id'].'.jpg');
     move_uploaded_file($_FILES["Background"]["tmp_name"], 'images/game/background/'.$row['game_id'].'.jpg');
-
     $link->close(); 
     header('Location: add_game.php? game_id='.$row['game_id']);
     exit();
@@ -90,6 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
     <title>Add game</title>
+    <link rel="icon" type="image/x-icon" href="images/Logo.ico">
     <meta name="viewport" content="width=device-width"/>
     <link rel="stylesheet" type="text/css" href="style/main.css" />
     <link rel="stylesheet" type="text/css" href="style/navbar.css" />
@@ -138,21 +136,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label class = "input_label" for="game_trailer_title">Trailer title*:</label>
                     <input class= "input" type="text" placeholder="Enter trailer title" id="game_trailer_title" name="game_trailer_title" required><br><br>
 
-                    <label class = "input_label" for="game_poster">Game poster</label>
+                    <label class = "input_label" for="Poster">Game poster</label>
                     <input class= "input" type="file" id = "Poster" name="Poster"/><br><br>
 
-                    <label class = "input_label" for="game_background">Game background</label>
+                    <label class = "input_label" for="Background">Game background</label>
                     <input class= "input" type="file" id = "Background" name="Background"/><br><br>
 
                     <input class= "button" type="submit" value="Submit">
                 </form>
                 <?php
                 if (isset($_GET["game_id"])){
-                    if($_GET["game_id"]== NULL){
+                    if($_GET["game_id"]=='NULL'){
                         echo '<p class="error"> Error: Something went wrong </p>';
                     }
                     else{
-                        echo '<p class="success"> <span>Operation completed, go to </span><span><a class="link" href = "game.php? game_id='.$_GET["game_id"].'"> New game page </a></span></p>';
+                        echo '<p class="success"> <span>Operation completed, go to </span><span><a class="link" href = "game.php?game_id='.$_GET["game_id"].'"> New game page </a></span></p>';
                     }
                 }
                 ?>

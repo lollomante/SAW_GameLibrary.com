@@ -3,170 +3,40 @@ body {
     min-height: 150vh;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    /*justify-content: center;*/
-}
-
-.main{
+    margin-bottom: 70px;
+  }
+  .main{
     margin-top: 15px;
     color: rgb(255, 255, 255);
     font-family: Arial, Helvetica, sans-serif;
-}
-.title{
+  }
+  .title{
     margin: 0;
     margin-bottom: 50px;
     color:#58d2e5;
     font-size: 40px;
     font-weight: bold;
     text-align: center;
-}
-.container{
+  }
+  .container{
     line-height:30px;
-    border: 2px solid #58d2e5;
     border-radius: 5px;
-    width: 95%;
-    /*width: 100%;*/
-    margin: auto;
-}
-.inner_container{
+  }
+  .inner_container{
     width: auto;
     margin: auto;
-    border: 2px solid #58d2e5;
-}
-.poster{
-    margin-top: 40px;
+  }
+  .poster{
+    margin-top: 100px;
     margin-bottom: 40px;
-    margin-left: 1%;
-    margin-right: 1%;
-    
-}
-.row{
-    width: 90%;
-    margin: auto;
-    border: 2px solid #58d2e5;
-    
-}
-
-.image-container {
-   /*flex: 4;
-    /*margin: 10px; /* Adjust the margin as needed */
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-flex;
   }
-
-  .image-container img {
-    width: 20%;
-   height: auto;
-    /*display: block;*/
-  }
-
-
-
-
-/*
-* {
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 0;
-    font-family: Arial;
-  }
-  
-  .header {
-    text-align: center;
-    padding: 32px;
-  }
-  /*
-  .row {
-    display: -ms-flexbox; 
+  .row{
     display: flex;
-    -ms-flex-wrap: wrap; 
-    flex-wrap: wrap;
-    padding: 0 4px;
-    width: 90%;
-  }
-  */
-  /* Create four equal columns that sits next to each other */
-  .column {
-    -ms-flex: 25%;
-    flex: 25%;
-    max-width: 20%;
-    padding: 0 4px;
+    width:90%;
+    margin:auto;
   }
   
-  .column img {
-    margin-top: 8px;
-    vertical-align: middle;
-    width: 100%;
-  }
-  
-  /* Responsive layout - makes a two column-layout instead of four columns */
-  @media screen and (max-width: 800px) {
-    .column {
-      -ms-flex: 50%;
-      flex: 50%;
-      max-width: 50%;
-    }
-  }
-  
-  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-  @media screen and (max-width: 600px) {
-    .column {
-      -ms-flex: 100%;
-      flex: 100%;
-      max-width: 100%;
-    }
-  }
-/*made on earth by humans*/
-
-
-/*<body class="body">
-    <?php include 'navbar.php'; ?>
-    <div class ="main">
-        <p class="title">Your library</p>
-        <div class="container">
-            <div class="inner_container">
-                <?php
-                    for($i=0; $i<$rowcount;){
-                        echo '<p>';
-                        for($j= 0; $j<4 && $i<$rowcount; $j++){
-                            $row=$res->fetch_assoc();
-                            echo '<span>';
-                            echo '<a class = "poster" href = "game.php?game_id='.$row['game_id'].'">
-                                    <img class="poster" src="images/game/posters/'.$row['game_id'].'.jpg" width="300" height="450" alt="'.$row['name'].'"></a>';
-                            echo'</span>';
-                            $i++;
-                        }
-                        echo '</p>';
-                    }
-                    while($row=$res->fetch_array()){
-                        echo '<span>';
-                        echo '<a class = "poster" href = "game.php?game_id='.$row['game_id'].'">
-                                <img class="poster" src="images/game/posters/'.$row['game_id'].'.jpg" width="300" height="450" alt="'.$row['name'].'"></a>';
-                        echo'</span>';
-                    }
-                    ?>
-                    </div>
-        
-                </div>
-            </div>
-        
-            <?php include 'footer.php'; ?>
-            <!--made on earth by humans-->
-        
-        </body>
-        
-                <div class="row">
-            <?php
-            for($i=0; $i<$rowcount;){
-                echo '<div class="column">';
-                for($j= 0; $j<4 && $i<$rowcount; $j++){
-                    $row=$res->fetch_assoc();
-                    echo '<a class = "poster" href = "game.php?game_id='.$row['game_id'].'"><img class="poster" src="images/game/posters/'.$row['game_id'].'.jpg" width="300" height="450" alt="'.$row['name'].'"></a>';
-                    echo $row['game_id'];
-                    $i++;
-                }
-                echo '</div>';
-            }
-        ?>
-        */
+  /*made on earth by humans*/

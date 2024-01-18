@@ -9,6 +9,8 @@ require_once 'process/config.php';
     <link rel="stylesheet" type="text/css" href="style/index.css" />
     <link rel="stylesheet" type="text/css" href="style/navbar.css" />
     <link rel="stylesheet" type="text/css" href="style/footer.css" />
+    <title>Under construction</title>
+    <link rel="icon" type="image/x-icon" href="images/Logo.ico">
 </head>
 <body class ="body">
     <?php 

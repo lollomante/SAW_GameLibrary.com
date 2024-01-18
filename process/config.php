@@ -4,7 +4,12 @@
     define('DB_USERNAME', 'root');
     define('DB_PASSWORD', '');
     define('DB_NAME', 'release_game_library');
-
+/*
+    define('SERVER', 'localhost');
+    define('DB_USERNAME', 'S4956547');
+    define('DB_PASSWORD', '7hnC6FSfdd');
+    define('DB_NAME', 'S4956547');
+*/
 //login
     define('REMEMBER_ME_DURATION', 1296000); // 15 giorni
 

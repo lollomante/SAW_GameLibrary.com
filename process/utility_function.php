@@ -12,5 +12,10 @@ function Validate_Password($input){
     return ((null != trim($input))&&(strlen($input) < 100)&&(strlen($input)> 7));
 }
 
+function Validate_data($input) {
+    $datetime = DateTime::createFromFormat('Y-m-d', $input);
+    return ((null!=$datetime) && ($datetime->format('Y-m-d') === $input));
+}
+
 /*made on earth by humans*/
 ?>

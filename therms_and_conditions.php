@@ -8,6 +8,7 @@ require_once 'process/config.php';
 <html lang="en">
 <head>
     <title>Therms and Conditions</title>
+    <link rel="icon" type="image/x-icon" href="images/Logo.ico">
     <link rel="stylesheet" type="text/css" href="style/main.css" />
     <link rel="stylesheet" type="text/css" href="style/search_bar.css" />
     <link rel="stylesheet" type="text/css" href="style/navbar.css" />

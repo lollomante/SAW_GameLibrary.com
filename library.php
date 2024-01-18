@@ -4,6 +4,7 @@ require_once 'process/config.php';
 require_once 'process/access_control.php';
 if (!session_control()){
     header('Location: login.php');
+    exit();
 }
 
 include 'process/mysqli_connect.php';
@@ -34,6 +35,7 @@ $rowcount=$res->num_rows;
 
 <head>
     <title>Your library</title>
+    <link rel="icon" type="image/x-icon" href="images/Logo.ico">
     <meta name="viewport" content="width=device-width"/>
     <link rel="stylesheet" type="text/css" href="style/main.css" />
     <link rel="stylesheet" type="text/css" href="style/navbar.css" />
@@ -42,69 +44,32 @@ $rowcount=$res->num_rows;
 </head>
 
 <body class="body">
-    <?php include 'navbar.php'; ?>
+<?php include 'navbar.php'; ?>
     <div class ="main">
+        <p class="title">Your library</p>
         <div class="container">
             <div class="inner_container">
                 <?php
                     for($i=0; $i<$rowcount;){
-                        //echo '<div class="row">';
-                        //for($j= 0; $j<4 && $i<$rowcount; $j++){
-                            $row=$res->fetch_assoc();
-                            echo '<span class="image-container">';
-                            echo '<a class = "poster cloumn" href = "game.php?game_id='.$row['game_id'].'">
-                                    <img class="poster cloumn" src="images/game/posters/'.$row['game_id'].'.jpg" width="300" height="450" alt="'.$row['name'].'"></a>';
-                            echo'</span>';
-                            $i++;
-                        //}
-                        //echo '</div>';
-                    }
-                ?>        
-            </div>
-        </div>
-            <!--
-                                    for($i=0; $i<$rowcount;){
-                        echo '<div class="row">';
+                        echo '<div class = "row">';
                         for($j= 0; $j<4 && $i<$rowcount; $j++){
                             $row=$res->fetch_assoc();
-                            echo '<span class="image-container">';
-                            echo '<a class = "poster cloumn" href = "game.php?game_id='.$row['game_id'].'">
-                                    <img class="poster cloumn" src="images/game/posters/'.$row['game_id'].'.jpg" width="300" height="450" alt="'.$row['name'].'"></a>';
+                            echo '<span class = "poster">';
+                            echo '<a href = "game.php?game_id='.$row['game_id'].'">
+                                    <img src="images/game/posters/'.$row['game_id'].'.jpg" width="300" height="450" alt="'.$row['name'].'"></a>';
                             echo'</span>';
                             $i++;
                         }
                         echo '</div>';
                     }
-            <div class="column">
-                <img src="/w3images/wedding.jpg" style="width:100%">
-                <img src="/w3images/rocks.jpg" style="width:100%">
-                <img src="/w3images/falls2.jpg" style="width:100%">
-                <img src="/w3images/paris.jpg" style="width:100%">
+                ?>
             </div>
-            <div class="column">
-                <img src="/w3images/underwater.jpg" style="width:100%">
-                <img src="/w3images/ocean.jpg" style="width:100%">
-                <img src="/w3images/wedding.jpg" style="width:100%">
-                <img src="/w3images/mountainskies.jpg" style="width:100%"> 
-            </div>  
-            <div class="column">
-                <img src="/w3images/wedding.jpg" style="width:100%">
-                <img src="/w3images/rocks.jpg" style="width:100%">
-                <img src="/w3images/falls2.jpg" style="width:100%">
-                <img src="/w3images/paris.jpg" style="width:100%">
-            </div>
-            <div class="column">
-                <img src="/w3images/underwater.jpg" style="width:100%">
-                <img src="/w3images/ocean.jpg" style="width:100%">
-                <img src="/w3images/wedding.jpg" style="width:100%">
-                <img src="/w3images/mountainskies.jpg" style="width:100%">
-            </div>
-            -->
+
+        </div>
     </div>
-    <br><br><br><br>
+
     <?php include 'footer.php'; ?>
     <!--made on earth by humans-->
-
 </body>
 
 </html>

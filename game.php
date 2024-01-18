@@ -97,6 +97,7 @@ else{
     <link rel="stylesheet" type="text/css" href="style/main.css" />
     <link rel="stylesheet" type="text/css" href="style/game.css" />    
     <title><?php echo $game_name;?></title>
+    <link rel="icon" type="image/x-icon" href="images/Logo.ico">
     <style>
         .background-container {
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)), url(<?php echo '"images/game/background/'.$game_id.'.jpg"'?>) center/cover no-repeat;
@@ -194,7 +195,7 @@ else{
             </div>
         </div>
         <div class="inner_container">
-            <iframe width="1250" height="703" src= <?php echo $trailer_link;?> title=<?php echo $trailer_title;?> frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe class="video" width="1250" height="703" src= <?php echo $trailer_link;?> title=<?php echo $trailer_title;?> allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             <br><br><br><br><br>
         </div>
     <?php include 'footer.php';?>

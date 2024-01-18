@@ -1,0 +1,85 @@
+<?php
+    //check if user is not banned and create session, return fase if user is banned, create session and return true otherwise
+    function create_session($role, $email, $firstname, $lastname, $id){
+        include 'mysqli_connect.php';
+        $stmt=$link->prepare("SELECT banned FROM user WHERE email=?");
+        if($stmt == false){
+            $link->close();
+            return false;
+        }
+        $stmt->bind_param('s', $email);
+        if($stmt == false){
+            $link->close();
+            return false;
+        }
+        $stmt->execute();
+        if($stmt == false){
+            $link->close();
+            return false;
+        }
+        $res = $stmt->get_result();
+        $rowcount = $res->num_rows;
+        if($rowcount==1){
+            $row = $res->fetch_assoc();
+            if ($row['banned']=='0'){
+                $_SESSION['role'] = $role;
+                $_SESSION['email'] = $email;
+                $_SESSION['fistname'] = $firstname;
+                $_SESSION['lastname'] = $lastname;
+                $_SESSION['user_id'] = $id;
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    //return true if you are logged in, false otherwhise
+    function session_control(){
+        if (isset($_SESSION["role"])){
+            return true;
+        }
+        //"remember me" management
+        if (isset($_COOKIE['remember_me'])){
+            include 'mysqli_connect.php'; 
+            $data = explode('/', $_COOKIE['remember_me']);
+            $stmt=$link->prepare("SELECT firstname, lastname, email, user_id, admin, remember_user_token, remember_expire FROM user WHERE remember_user_id=?");
+            if($stmt == false){
+                $link->close();
+                return false;
+            }
+            $stmt->bind_param('s', $data[0]);
+            if($stmt == false){
+                $link->close();
+                return false;
+            }
+            $stmt->execute();
+            if($stmt == false){
+                $link->close();
+                return false;
+            }
+            $res = $stmt->get_result();
+            if($res->num_rows==1){
+                $row = $res->fetch_assoc();
+                if ($row['remember_expire']>time()){
+                    if(password_verify($data[1], $row['remember_user_token'])){
+                        if(create_session($row['admin'],$row['email'],$row['firstname'],$row['lastname'],$row['user_id'])==TRUE){
+                            return true; 
+                        }
+                    }
+                }   
+            }
+        }
+        return false;
+    }
+
+    //return true if you are logged in with an admin account, false otherwhise
+    function admin_control(){
+        if (session_control() && $_SESSION['role']==1){
+            return true;
+        }
+        return false;
+    }
+
+/*made on earth by humans*/
+    
+?>

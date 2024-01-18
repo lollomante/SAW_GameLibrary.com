@@ -8,6 +8,7 @@ require_once 'process/access_control.php';
 <html lang="en">
 <head>
     <title>GameLibrary.com</title>
+    <link rel="icon" type="image/x-icon" href="images/Logo.ico">
     <meta name="viewport" content="width=device-width"/>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style/index.css" />
@@ -55,7 +56,7 @@ require_once 'process/access_control.php';
                     <p class='paratitle'> Discover, Organize, and Share: </p>
                     <ul>
                     <li class='gentext'>Explore your extensive game library with ease.</li>
-                    <li class='gentext'>Organize your games the way you want, from classic titles to the latest releases.</li>
+                    <li class='gentext'>Organize your games the way you want, no matter on wich platform you have them.</li>
                     <li class='gentext'>Connect with fellow gamers who share your interests.</li>
                     </ul>
                 </div>

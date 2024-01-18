@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'process/mysqli_connect.php';
     $email = trim($_POST['email']);
     $password = trim($_POST['pass']);
-    $stmt=$link->prepare("SELECT firstname, lastname, pass, user_id, email FROM user WHERE email=?");
+    $stmt=$link->prepare("SELECT firstname, lastname, pass, user_id, email, admin, FROM user WHERE email=?");
     if($stmt == false){
         $link->close(); 
         header('Location: login.php? success=fail');
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $row = $res->fetch_assoc();
     if(password_verify($password, $row['pass'])){
-        if(create_session(session_id(),$row['email'],$row['firstname'],$row['lastname'],$row['user_id'])){
+        if(create_session($row['admin'],$row['email'],$row['firstname'],$row['lastname'],$row['user_id'])){
             
             //"remember me" management
             if(isset($_POST['remember'])){

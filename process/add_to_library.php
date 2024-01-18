@@ -4,6 +4,7 @@ require_once 'config.php';
 require_once 'access_control.php';
 if (!session_control()){
     header('Location: ../index.php');
+    exit();
 }
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if(isset($_GET['game_id'])){

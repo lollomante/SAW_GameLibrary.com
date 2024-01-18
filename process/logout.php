@@ -13,8 +13,10 @@ if(isset($_COOKIE['remember_me'])){
     }
     setcookie('remember_me', NULL, time()-3600); 
     $link->close();
-}         
-session_destroy();
+}
+if(isset($_SESSION["key"])){         
+    session_destroy();
+}
 header('Location: ../index.php');
 exit;
 
