@@ -137,4 +137,5 @@ $link->close();
     include 'footer.php';
     ?>
 </body>
+<!--made on earth by humans-->
 </html>

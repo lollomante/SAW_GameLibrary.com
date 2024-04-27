@@ -1,0 +1,44 @@
+
+
+
+
+/*---------------------------------------*/
+.game-card img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.profile {
+    background-color: #16202d;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #5c7e10;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #8b9e2e;
+}
+
+footer {
+    background-color: #171a21;
+    color: #666666;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+}

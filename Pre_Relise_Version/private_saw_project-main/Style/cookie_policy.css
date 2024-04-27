@@ -1,0 +1,34 @@
+body {
+    font-family: 'San Francisco', Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background: #f3f3f3;
+}
+
+.cookie-policy {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+    color: #1D1D1D;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    height: 20%;
+}
+
+p {
+    text-align: justify;
+    font-size: 16px;
+}

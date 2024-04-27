@@ -71,6 +71,7 @@ if (isset($_GET["success"])) {
 
     <script src="script/user_list.js"></script>
   </body>
+  <!--made on earth by humans-->
 </html>
 
 

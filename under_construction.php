@@ -22,4 +22,5 @@ require_once 'process/config.php';
         include 'footer.php';
     ?>
 </body>
+<!--made on earth by humans-->
 </html>
