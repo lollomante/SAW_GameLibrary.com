@@ -179,25 +179,7 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`firstname`, `lastname`, `email`, `pass`, `admin`, `banned`, `user_id`, `profilePic`, `remember_user_token`, `remember_user_id`, `remember_expire`) VALUES
-('root', 'root', 'root@root.it', '$2y$10$JG7Aubu9Na68wHY/OZCxj.5FbtKyYvRCk04EPbbg9ydvnQRmtYkL2', 1, 0, 7, NULL, NULL, NULL, NULL),
-('q', 'q', 'q@q', '$2y$10$1UZbQlaCgvTyrK3yOVoiyeUJfaKJQRpGTobv2oBJjKoxDQvJdwn76', 0, 1, 52, NULL, NULL, NULL, NULL),
-('w', 'w', 'w@w', '$2y$10$f7rtV8aTEHU5C6UY2ndFf.rDzidj5Grx5Aps.khGQk2/V8VvKS26m', 0, 0, 53, NULL, NULL, NULL, NULL),
-('Rmozebdnw', 'Ehvaxuycr', 'pycsj@levbqtizjd.rsa', '$2y$10$a2w7gBrJZ5q9CEg1c1mX7Ob3uOarbmvqLLb7Mr.gdfSsPZmL214RK', 0, 0, 59, NULL, NULL, NULL, NULL),
-('Naezqygdv', 'Owdtnqlcv', 'tdmrb@jzlqkcurma.pkd', '$2y$10$q0aAVR6FG.z/k7Ql.tIyv.eQfD9GynfYvjEkFxwlNQ7aTIqbTGtUm', 0, 0, 60, NULL, NULL, NULL, NULL),
-('Thfrxamqs', 'Ksnltewzf', 'vnjaw@itmxbjuphr.wip', '$2y$10$8BlCUqk9x5PTxeaMqs8QkeLikexPJU2VvpFyr3CDTjk8RaL/LgmwK', 0, 0, 62, NULL, NULL, NULL, NULL),
-('Rahumzerg', 'Qfbysxovk', 'ulgdq@fvnmcxjhti.gci', '$2y$10$A/hh3T8RoMm7Et/AcFKz8uotkneajvj1bFSbJ6B7zkNnCSH9YJxfq', 0, 0, 64, NULL, NULL, NULL, NULL),
-('Xlcwuhdbv', 'Axzrkamwc', 'qdtvi@rlmuwqxavb.qnr', '$2y$10$qVOMXmYpVunehN6Shk8Wc.xDm/LdHM9UTHRR2uc5oJWEz1sl7tcHi', 0, 0, 65, NULL, NULL, NULL, NULL),
-('gina', 'gina', 'gina@gina', '$2y$10$S0CwNCiK2FtmWiauTl5nauzgOKp.PkZ.FKhSeeHtllnrFQh8YVb3C', 0, 1, 75, NULL, NULL, NULL, NULL),
-('lorenzo', 'mantero', 'lollo@mante', '$2y$10$FveFql6OxxXYQv54K/T3e.GfSVbmYqSpRQ3gvrr.zlFDtzZqnd6vC', 0, 0, 76, NULL, NULL, NULL, NULL),
-('Ljpbqtyld', 'Uktrglmwp', 'vqcjr@qtimbjwzgp.ncp', '$2y$10$SaIpb.pvYF9k4sPicWby9e7Vksb3PZZpG2rJ4txDyKFU5pMCMqSyC', 0, 0, 79, NULL, NULL, NULL, NULL),
-('ciao', 'Bel sito complimenti', 'o.o@o.o', '$2y$10$CQ2JY2IG.NH/UoTjf3dLqeGvomKvJIjhwQvJJIFsinbUInjqky.Y2', 0, 0, 83, NULL, NULL, NULL, NULL),
-('Etfrkhlui', 'Nurogbmpl', 'ukxsg@xwckajbzhu.dqt', '$2y$10$sSQOFsrXoXRrBL9tzSlSyeuya0rpqN/ILBBi9GmxPJ.2fiEb2faOG', 0, 0, 86, NULL, NULL, NULL, NULL),
-('Fadmvflhw', 'Nqfwrgsut', 'pdwuz@wkpneuqahi.pos', '$2y$10$cHOPX3.gH.Zf0fyExbZCG.EFZRGD92nnFMbldBPXhD1NhwPBgeXgS', 0, 0, 90, NULL, NULL, NULL, NULL),
-('Cnbrivcto', 'Gjvhmkpsr', 'yjorf@kqmfreocab.vmu', '$2y$10$932wU3j24q4t99ZxfY9NeepbtdeuPIMIU2SXGpS37pS/NC.FrkaPq', 0, 0, 96, NULL, NULL, NULL, NULL),
-('Nswzxeahb', 'Evwfxuylk', 'xyfht@ysuphjwoid.gjf', '$2y$10$uB7m/F2fFxAUgPwOpjeChuNZiaVab0/GbV0s5E09.sdPTiyvyjPm.', 0, 0, 100, NULL, NULL, NULL, NULL),
-('Aqmwsrnfj', 'Avuepwojs', 'yastb@qzfocneium.dcu', '$2y$10$ZMh61CLIvPv0fGPifWeJSOlknUB4uMEAGySD/LZ5rJTawY6PUTNnS', 0, 0, 101, NULL, NULL, NULL, NULL),
-('mario', 'rossi', 'ajswd@tzelkfvyrx.fjs', '$2y$10$5OBAWekqhicnDuKc4EnmjONoaQ5969KR2IF2A/PDwTivX3CAGgQ6i', 0, 0, 102, NULL, NULL, NULL, NULL);
+
 
 --
 -- Indexes for dumped tables
